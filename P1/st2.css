@@ -1,0 +1,64 @@
+#main{
+    width:660px;
+    margin: 0 auto;
+}
+
+.input-control {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    margin:20px auto;
+}
+
+.input-control input {
+    flex: 1;
+    margin-right: 10px;
+    align-items: center;
+}
+/*.input-control input[type="checkbox"]{*/
+/*    flex: 1;*/
+/*}*/
+/*.input-control input[type=""]*/
+.check{
+    flex:1;
+}
+.checktext{
+    flex:2;
+}
+
+input[type="text"],[type="password"],[type="submit"]{
+    box-sizing: border-box;
+    /*text-align:center;*/
+    /*align-items: center;*/
+    font-size:1.4em;
+    height:2.7em;
+    border-radius:4px;
+    border:1px solid #c8cccf;
+    /*color:#6a6f77;*/
+    -web-kit-appearance:none;
+    -moz-appearance: none;
+    display:inline-block;
+    /*justify-content: center;*/
+    outline:0;
+    padding:0 1em;
+    text-decoration:none;
+}
+input[type="text"]:focus{
+    border:1px solid #ff7496;
+}
+
+h1{
+    text-align: center;
+}
+#register{
+    background-color: cornflowerblue;
+}
+#login{
+    background-color: aquamarine;
+}
+button{
+    background-color: cornflowerblue;
+}
+p{
+    font-size: 11px;
+}
