@@ -128,6 +128,18 @@ function q11(arr){
 
 // console.log(q11([1, 2, 3, 4, 5]))
 
+//Question 12
+function q12(num){
+    let arr = q13(num).slice(0, -1)
+    // arr = arr
+    return arr.reduce((a, b) =>{
+        return a + b
+    }) === num && num !== 0
+    // console.log(arr)
+}
+// console.log(q12(8128))
+
+
 
 //Question 13
 function q13(num){
@@ -204,6 +216,24 @@ function q17(str){
 }
 // console.log(q17('thequickbrownfoxjumpsoverthelazydog'))
 
+//Question 18
+function q18(arr,tar){
+        let start = 0;
+        let end = arr.length - 1;
+        while (start <= end) {
+            let mid = Math.floor((start + end) / 2);
+            if (arr[mid] === tar) {
+                return mid;
+            } else if (arr[mid] < tar) {
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
+        }
+
+        return -1;
+}
+
 //Question 19
 function q19(num, arr){
     return arr.filter((a =>{
@@ -214,6 +244,158 @@ function q19(num, arr){
 // console.log(q19(5, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
 
 //Question 20
-function q20(){
-    
+function q20(num){
+        const str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < num; i++) {
+            result += str[Math.floor(Math.random() * str.length)];
+        }
+        return result;
 }
+
+// console.log(q20(10))
+
+//Question 21
+function q21(arr, num){
+        const result = [];
+
+        function dfs(current, start) {
+            if (current.length === num) {
+                result.push(current.slice());
+                return;
+            }
+
+            for (let i = start; i < arr.length; i++) {
+                current.push(arr[i]);
+                dfs(current, i + 1);
+                current.pop();
+            }
+        }
+
+        dfs([], 0);
+        return result;
+}
+
+    // console.log(q21([1, 2, 3], 2));
+
+
+//Question 22
+function q22(str, char){
+    let map = {}
+    for(let letter of str){
+        map[letter] = (map[letter] || 0) + 1
+    }
+    return map[char]
+}
+
+// console.log(q22( 'microsoft.com', 'o' ))
+
+//Question 23
+function q23(str){
+    let map = {}
+    for(let letter of str){
+        map[letter] = (map[letter] || 0) + 1
+    }
+    for (let letter of str){
+        if(map[letter] === 1){
+            return letter
+        }
+    }
+}
+// console.log(q23( 'abacddbec'))
+
+//Question 24
+function q24(arr){
+    for (let i in arr) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+    return arr;
+}
+
+// console.log(q24([12, 345, 4, 546, 122, 84, 98, 64, 9, 1, 3223, 455, 23, 234, 213]));
+
+//Question 25
+function q25(list){
+    return list.sort((a,b) =>{
+        return b.length - a.length
+    })[0]
+
+}
+// console.log(q25(["Australia", "Germany", "United States of America"]))
+
+//Question 26
+function q26(str){
+        let left = 0, right = 0, maxLength = 0;
+        const map = new Map();
+        let res = ""
+        while (right < str.length) {
+            if (map.has(str[right])) {
+                left = Math.max(left, map.get(str[right]) + 1);
+            }
+            map.set(str[right], right);
+            if (right - left + 1 > maxLength){
+                maxLength = right - left + 1
+                res = str.slice(left, right + 1)
+            }
+
+
+            right++;
+        }
+        return res;
+}
+
+// console.log(q26("abcdefgfgjlkersjio"))
+// console.log(q26("ahjfhruognosrnhoitrhtyh"))
+
+//Question 27
+function q27(str) {
+    if (!str || str.length < 2) {
+        return str;
+    }
+
+    let longest = '';
+    for (let i = 0; i < str.length; i++) {
+        let left = i, right = i;
+        while (right < str.length - 1 && str[right] === str[right + 1]) {
+            right++;
+        }
+        while (left > 0 && right < str.length - 1 && str[left - 1] === str[right + 1]) {
+            left--;
+            right++;
+        }
+        if (right - left + 1 > longest.length) {
+            longest = str.substring(left, right + 1);
+        }
+    }
+
+    return longest;
+}
+// console.log(q27("dfgfedcbaabcdefggsfdg"))
+
+//Question 28
+function q28cb(num){
+    return num * num
+}
+function q28(cb, arr){
+    let res = []
+    for(let num of arr){
+        res.push(cb(num))
+    }
+    return res
+}
+// console.log(q28(q28cb,[1, 2, 3, 4, 5]))
+
+//Question 29
+function q29name(){
+    console.log("name function")
+}
+
+function q29(func){
+    return func.name
+}
+
+// console.log(q29(q29name))
