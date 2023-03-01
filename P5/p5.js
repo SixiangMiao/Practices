@@ -33,7 +33,7 @@ func();
 let arr1 = ["123123", "123", "451511", "422"]
 let minimumLength = 5
 function cb(minLength){
-    return (str) =>{
+    return function(str) {
         return  str.length > minLength
     }
 }
