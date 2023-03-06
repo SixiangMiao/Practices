@@ -55,14 +55,19 @@ const Controller = ((view, model) => {
             if (domSelector.time.innerHTML > 0){
                 if (remain > 0){
                     const ran = generateRandom(remain)
-                    console.log(map)
-                    map[ran] = 1;
-                    remain --;
+                    // console.log("dishu" + ran, "--58")
+
+                    // console.log(map)
+                    if(map[ran] === 0){
+                        map[ran] = 1;
+                        remain --;
+                    }
                     domSelector[`cir${ran}`].style.backgroundImage = "url(./mole.jpeg)"
                     domSelector[`cir${ran}`].style.backgroundSize = "cover"
                 }
                 if(snakeallow >= 2){
                     const snakeran = Math.floor(Math.random() * 12) + 1;
+                    // console.log("she" + snakeran)
                     domSelector[`cir${snakeran}`].style.backgroundImage = "url(./mine.jpeg)"
                     domSelector[`cir${snakeran}`].style.backgroundSize = "cover"
                     snakemap[snakeran] ++;
@@ -95,7 +100,7 @@ const Controller = ((view, model) => {
                 clearInterval(interval)
                 // clearInterval(snake())
             }
-            // console.log(map)
+            // console.log(snakeran)
 
 
             for (let i = 1; i <= 12; i ++){
@@ -166,24 +171,5 @@ const Controller = ((view, model) => {
             alert("Game in process")
         }
     })
-    // const snake = () =>{
-    //     const createSnake = setInterval(() => {
-    //         // domSelector.time.innerHTML = (domSelector.time.innerHTML - 1).toString()
-    //         if(domSelector.time.innerHTML > 0 ){
-    //             const snakeran = Math.floor(Math.random() * 12) + 1;
-    //             domSelector[`cir${snakeran}`].style.backgroundImage = "url(./mine.jpeg)"
-    //             domSelector[`cir${snakeran}`].style.backgroundSize = "cover"
-    //             snakemap[snakeran] ++;
-    //             if(map[snakeran] > 0){
-    //                 map[snakeran] = 0;
-    //                 remain ++;
-    //             }
-    //
-    //             console.log(snakemap)
-    //         }
-    //     },2000)
-    //     return createSnake
-    // }
-    // setTimeout()
     return 1
 })(View,Model)
